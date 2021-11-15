@@ -20,6 +20,10 @@ module.exports = {
       is_published: {
         type: Sequelize.BOOLEAN
       },
+      book_cat: {
+        type: Sequelize.DataTypes.ENUM('drama', 'programming', 'financial', 'account'),
+        defaultValue: 'drama',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

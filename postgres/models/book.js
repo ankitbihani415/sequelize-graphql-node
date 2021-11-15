@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Book.hasOne(models.Attachment, {
-        foreignKey: 'parent_id'
+        foreignKey: 'parent_id',
+        as:'cover_image'
       });
     }
   };
@@ -27,6 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     is_published: {
       type:DataTypes.BOOLEAN,
       defaultValue:false
+    },
+    book_cat: {
+      type:DataTypes.ENUM,
+      values: ['drama', 'programming', 'financial', 'account'],
+      defaultValue: 'drama',
     }
   }, {
     sequelize,

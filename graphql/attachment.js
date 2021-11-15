@@ -35,6 +35,7 @@ const attachmentTypeDef = `
 const attachmentResolvers = {
     Mutation:{
         testUploadAttachment : async( _ , args, {models}) => {
+            debugger
             const { filename, mimetype, createReadStream } = await args.avatar.file;
             const stream = createReadStream();
             const pathObj = await storeFS( {stream, filename} );
@@ -49,4 +50,4 @@ const attachmentResolvers = {
     }
 }
 
-module.exports = {attachmentTypeDef, attachmentResolvers}
+module.exports = {attachmentTypeDef, attachmentResolvers, storeFS}
